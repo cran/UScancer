@@ -1,0 +1,15 @@
+2d3012e72f1a43591176d86de01fe3f7 *CHANGELOG
+52a87194a7d1880080340f227da685cc *DESCRIPTION
+8b54e5a89fbda3af5e077053d40bec76 *NAMESPACE
+a9bb79321c904ab6d2b6221b36f16c71 *R/UScancer.R
+104709fe65d16e23cd94e031497dc58c *R/readCensus.R
+7fb6669536dce627d7dea430e1a5d0df *R/readSEER.R
+f10fbf13c1eb04d803b9a30edabfb4f7 *R/siteLookup.R
+c7305ba77cafa158365027a9366f87ae *data/dplookup.rda
+78d40e6cdbffdbd83421fa85122bd933 *data/fipslookup.rda
+d8734b67200fcb4e43cbd9b996c2919b *man/UScancer-package.Rd
+ebac6766868be7c7e9ccd489e5b09dfe *man/dplookup.Rd
+6db8a9900d1b411030df8b59961edad2 *man/fipslookup.Rd
+be90f53d60815a0d6ac37e634e59c406 *man/readCensus.Rd
+5dfa78dfbd595c9329ad0b941e9fd95e *man/readSEER.Rd
+719a35d12baa3b281214bdd6a5749f6d *man/siteLookup.Rd
