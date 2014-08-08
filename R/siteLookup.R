@@ -39,7 +39,8 @@ siteLookup <- function(cancer) {
 # List cancers types that are supported by this package
 # Can specify your own if you know the specific ICD code(s) (as a regular expression)
 listCancers <- function() {
-  return(c("All Sites","Liver","Nasal and Ear","Sinus","Larynx","Trachea","Lung","Thymus","Heart","Other Respiratory","Bone","Breast","Meninges","Thyroid"))
+  clist = c("All Sites","Liver","Nasal and Ear","Sinus","Larynx","Trachea","Lung","Thymus","Heart","Other Respiratory","Bone","Breast","Meninges","Thyroid")
+  return(sort(clist))
 }
 
 

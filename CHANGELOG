@@ -1,2 +1,9 @@
 0.1-1
 * Initial package release
+
+0.1-2
+* listCancers returns an alphabeticalized list
+* updated documentation
+* added a column to 'fipslookup' with formatting matching IDs from NHGIS
+* readSEER now returns age and sex of case data
+* readSEER no longer has a default file to force user to ensure the correct file is specified

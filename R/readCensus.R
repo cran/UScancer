@@ -26,3 +26,15 @@ readCensus <- function(dsn="/",layer="County_2010Census_DP1",state,fips,codes) {
 #dsn="../../../CCO/usCensus"
 #layer="County_2010Census_DP1"
 #usPop <- readCensus(dsn,layer,dplookup)
+
+
+
+
+# Read census subdivision
+# data(dplookup)
+# data(fipslookup)
+# dsn="../../../CCO/usCensus/CouSub_2010Census_DP1"
+# layer="CouSub_2010Census_DP1"
+# state="Kentucky"
+# fips=fipslookup
+# codes=dplookup

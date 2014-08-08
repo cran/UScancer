@@ -1,22 +1,25 @@
 # Read SEER data (assume downloaded locally)
 #  file = vector of files to read from, i.e. files = c("usCancer/SEER_1973_2010_TEXTDATA/incidence/yr1992_2010.sj_la_rg_ak/RESPIR.TXT","usCancer/SEER_1973_2010_TEXTDATA/incidence/yr2000_2010.ca_ky_lo_nj_ga/RESPIR.TXT")
 
-readSEER <- function(file="SEER_1973_2010_TEXTDATA/incidence/yr1973_2010.seer9/RESPIR.TXT",year,state,cancer,site,fips) {
+readSEER <- function(file,year,state,cancer,site,fips) {
   
-  #data(fipslookup)
+  if(missing(file)) {
+    print("Please specify SEER TXT file(s) to read from. Be sure the specified file includes the cancer and state of interest.")
+  }
       
   # the file is in a weird format, extract data from these indicies
-  startCols = c(year=39, siteRecode=208,fips=246)
-  endCols = c(year=43, siteRecode=212,fips=251)
+  startCols = c(sex=24, age=25, year=39, siteRecode=208, fips=246)
+  endCols   = c(sex=25, age=28, year=43, siteRecode=212, fips=251)
   
   widths = c(min(startCols)-1, diff(sort(c(startCols,endCols))))
-  theNames = c("junk1","year","junk2","site","junk3","fips")
+  theNames = c("junk1","sex","junk2","age","junk3","year","junk4","site","junk5","fips")
   
   allCancer = NULL
   for(D in file) {
-    usCancer = read.fwf(D,widths = widths,colClasses=c("character","integer","character","character","character"))
+    usCancer = read.fwf(D,widths = widths,
+                        colClasses=c("character","integer","character","integer","character","integer","character","character","character","character"))
     names(usCancer) = theNames
-    usCancer = usCancer[,c("year","site","fips")]
+    usCancer = usCancer[,c("year","site","sex","age","fips")]
     usCancer$site <- gsub(" ","",usCancer$site, fixed=TRUE) #remove some whitespacing
     usCancer = cbind(usCancer, fips[usCancer$fips,c("state","county")])
     rownames(usCancer) <- NULL #remove rownames that came from fipslookup

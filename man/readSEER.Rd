@@ -9,13 +9,12 @@ Read SEER cancer data (ASCII)
 Reads an ASCII text version of SEER data for one or more given years, states and cancer sites. Data is freely available (after completing a signed SEER Research Data Agreement form) at \url{http://seer.cancer.gov/data/access.html}. 
 }
 \usage{
-readSEER(file="SEER_1973_2010_TEXTDATA/incidence/yr1973_2010.seer9/RESPIR.TXT",
-            year,state,cancer,site,fips)
+readSEER(file,year,state,cancer,site,fips)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{file}{
-A vector of filenames specifying the SEER data. Defaults to the directory structure of the 1973-2010 ASCII SEER data on respiratory cancer.
+A vector of filenames specifying where to find the SEER data. For example, for respiratory cancers between 1973-2010, one could specify the following path from the default directory structure of SEER data \code{"SEER_1973_2010_TEXTDATA/incidence/yr1973_2010.seer9/RESPIR.TXT"}
 }
   \item{year}{
 A numeric vector specifying which years of the data to look at. If not specified, defaults to all years.
@@ -27,7 +26,7 @@ A character vector specifying which states to extract. Should be one or more of 
 A character vector specifying which cancers. This is passed to \code{\link{siteLookup}} to convert to a regular expression matching the proper site codes. Should be one or more of cancers from \code{\link{listCancers}}. If not specified, \code{site} is used instead. If neither are specified, then defaults to all cancers.
 }
 \item{site}{
-A characater vector of regular expressions to match cancer site codes on. This takes precidence over \code{cancer}. If neither are specified, then defaults to all cancers.
+A character vector of regular expressions to match cancer site codes on. This takes precidence over \code{cancer}. If neither are specified, then defaults to all cancers.
 }
 \item{fips}{
 A \code{\link{data.frame}} object with 5-digit FIPS codes as row numbers and two columns (state,county) with names of the state and county matching the FIPS code. A complete object is included in this package, see the \code{\link{fipslookup}} dataset.
@@ -42,7 +41,7 @@ A \code{\link{data.frame}} object with 5-digit FIPS codes as row numbers and two
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
-Returns a \code{\link{data.frame}} of cancer cases with year, site, state, county, and 5-digit state+county FIPS code. This format is compatible for use with the \code{\link[diseasemapping]{getSMR}} function from the \code{diseasemapping} package.
+Returns a \code{\link{data.frame}} of cancer cases with sex, age of diagnosis, year of diagnosis, site, state, county, and 5-digit state+county FIPS code. This format is compatible for use with the \code{\link[diseasemapping]{getSMR}} function from the \code{diseasemapping} package.
 }
 %\references{
 %% ~put references to the literature/web site here ~
@@ -63,7 +62,8 @@ Jonathan Lee \email{jonathan@utstat.utoronto.ca}
 data(fipslookup)
 
 \dontrun{
-seerData <- readSEER(year=2005,state="Kentucky",cancer="Larynx",fips=fipslookup)}
+#file should point to the proper TXT file containing the cancer data you are interested in
+seerData <- readSEER(file="RESPIR.TXT",year=2005,state="Kentucky",cancer="Larynx",fips=fipslookup)}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
